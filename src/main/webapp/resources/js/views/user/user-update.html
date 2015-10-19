@@ -1,0 +1,89 @@
+<div ng-controller="UserController">
+
+	<!-- Content Header (Page header) -->
+	<section class="content-header">
+		<h1>
+			Users
+		</h1>
+		<ol class="breadcrumb">
+			<li></i>Home</li>
+			<li class="active">Users</li>
+		</ol>
+	</section>
+
+	<!-- Main content -->
+	<section class="content">
+
+		<!-- Your Page Content Here -->
+
+		<div class="box box-info">
+
+			<!-- Tabs -->
+
+			<ul class="nav nav-tabs">
+				<li role="presentation"><a href="#/users/create">Create User</a></li>
+				<li role="presentation"><a href="#/users/list">User List</a></li>
+				<li role="presentation" class="active"><a href="#/users/update">Update User</a></li>
+			</ul>
+
+			<!-- form start -->
+			<form class="form-horizontal" name="form" ng-submit="createRecord()" novalidate>
+				<div class="box-body">
+
+					<!-- Name -->
+					<div class="form-group" ng-class="{ 'has-error' : form.name.$touched && form.name.$invalid }">
+						<label for="inputName" class="col-sm-2 control-label">Name</label>
+						<div class="col-sm-9">
+							<input type="text" name="name" class="form-control" ng-model="name" id="inputName" autocomplete="off" required>
+
+							<div class="help-block" ng-messages="form.name.$error" ng-if="form.name.$touched && form.name.$invalid">
+								<div ng-messages-include="/resources/js/views/templates/form-error-messages.html"></div>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Address -->
+					<div class="form-group" ng-class="{ 'has-error' : form.address.$touched && form.address.$invalid }">
+						<label for="inputAddress" class="col-sm-2 control-label">Address</label>
+						<div class="col-sm-9">
+							<input type="text" name="address" class="form-control" ng-model="address" id="inputAddress" autocomplete="off" required>
+
+							<div class="help-block" ng-messages="form.address.$error" ng-if="form.address.$touched && form.address.$invalid">
+								<div ng-messages-include="/resources/js/views/templates/form-error-messages.html"></div>
+							</div>
+
+						</div>
+					</div>
+
+					<!-- Description -->
+					<div class="form-group" ng-class="{ 'has-error' : form.description.$touched && form.description.$invalid }">
+						<label for="inputDescription" class="col-sm-2 control-label">Description</label>
+						<div class="col-sm-9">
+							<input type="text" name="description" class="form-control" ng-model="description" id="inputDescription" autocomplete="off" required>
+
+							<div class="help-block" ng-messages="form.title.$error" ng-if="form.description.$touched && form.title.$invalid">
+								<div ng-messages-include="/resources/js/views/templates/form-error-messages.html"></div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+				<div class="box-footer">
+					<button type="submit" class="btn btn-success pull-right" ng-disabled="form.$invalid">Save</button>
+					<button type="button" class="btn btn-default" ng-click="resetForm()">Cancel</button>
+				</div><!-- /.box-footer -->
+			</form>
+
+			<!-- form end -->
+
+		</div>
+
+		<div class="flashMessage" flash-message="5000"></div>
+
+	</section><!-- /.content -->
+
+
+
+</div>

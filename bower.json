@@ -1,0 +1,19 @@
+{
+  "name": "Blueprint",
+  "description": "Blueprint Project",
+  "version": "1.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.4.x",
+    "angular-route": "1.4.x",
+    "angular-loader": "1.4.x",
+    "angular-messages": "1.4.x",
+    "requirejs-text": "2.0.x",
+    "requirejs": "2.1.x",
+    "admin-lte": "2.3.x",
+    "ng-dialog": "0.5.1",
+    "angular-smart-table": "2.1.4",
+    "angular-flash-alert": "~1.1.1"
+  }
+}

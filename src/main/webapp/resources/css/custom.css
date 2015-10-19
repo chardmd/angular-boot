@@ -1,0 +1,15 @@
+.nav-tabs {
+    margin: 10px;
+}
+
+.tableContainer {
+    margin: 10px;
+}
+
+.st-sort-ascent:before {
+    content: '\25B2';
+}
+
+.st-sort-descent:before {
+    content: '\25BC';
+}
