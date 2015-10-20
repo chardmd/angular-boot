@@ -1,0 +1,56 @@
+<style>
+
+    .ngdialog.ngdialog-theme-default .ngdialog-content {
+        width: 600px;
+        background-color: #FFFFFF;
+    }
+
+</style>
+
+<div class="tableContainer">
+    <!-- table start -->
+
+    <table st-table="storeCollection" class="table table-striped">
+        <thead>
+
+        <tr>
+            <td colspan="4">
+
+                <div class="row">
+                    <div class="col-lg-8 pull-right">
+                        <input st-search="storename" placeholder="Search.." class="form-control" type="search"/>
+                    </div>
+                    <div class="col-lg-3 pull-right">
+                        <select class="form-control" id="predicate">
+                            <option selected="selected">Store</option>
+                        </select>
+                    </div>
+                </div>
+
+            </td>
+
+        </tr>
+
+        <tr>
+            <th>Select</th>
+            <th st-sort="row.storeId">Store ID</th>
+            <th st-sort="row.storeName">Store Name</th>
+            <th st-sort="row.address">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in storeCollection">
+            <td><input type="checkbox" checklist-model="storeSearchList" checklist-value="row.storeId" ng-change="storeCheck(row.storeId, checked)"></td>
+            <td>{{row.storeId}}</td>
+            <td>{{row.storeName}}</td>
+            <td>{{row.address}}</td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- table end -->
+
+    <div class="ngdialog-buttons">
+        <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="closeThisDialog(0)">Select</button>
+    </div>
+
+</div>

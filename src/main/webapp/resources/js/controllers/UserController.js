@@ -111,11 +111,7 @@ define(['config/ServerConfig'], function (ServerConfig) {
             imageUploadService.uploadImage(file);
 
             $scope.imageList = imageUploadService.imageList;
-
-            console.log("imageList = " + $scope.imageList);
-
         };
-
 
         $scope.rowCollection = [
 
@@ -123,6 +119,41 @@ define(['config/ServerConfig'], function (ServerConfig) {
             { userId: 2, name: 'User 2', address: 'New York', description: "Great" },
             { userId: 3, name: 'User 3', address: 'California', description: "Best" }
 
+        ];
+
+        /**
+         * Functionalities for stores to user
+         */
+
+        $scope.storeSearchList = [];
+
+        $scope.searchStore = function() {
+
+            ngDialog.open({
+                template: '/resources/js/views/templates/store-search.html',
+                scope: $scope
+            });
+
+        };
+
+        $scope.storeCheck = function(value, checked) {
+
+            var idx = $scope.storeSearchList.indexOf(value);
+            if (idx >= 0 && !checked) {
+                $scope.storeSearchList.splice(idx, 1);
+            }
+            if (idx < 0 && checked) {
+                $scope.storeSearchList.push(value);
+            }
+
+            $scope.store = $scope.storeSearchList;
+        };
+
+        $scope.storeCollection = [
+
+            {storeId: 1, storeName: 'Cotton ON', address: 'Bugis'},
+            {storeId: 2, storeName: 'TopMan', address: 'HarbourFront'},
+            {storeId: 3, storeName: 'HNM', address: 'Jurong East'}
         ];
 
     };

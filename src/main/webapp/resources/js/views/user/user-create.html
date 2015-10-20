@@ -69,6 +69,26 @@
 						</div>
 					</div>
 
+					<!-- Store -->
+
+					<div class="form-group" ng-class="{ 'has-error' : form.store.$touched && form.store.$invalid }">
+
+						<label for="inputStore" class="col-sm-2 control-label">Store Mapping</label>
+
+						<div class="col-sm-8">
+							<label class="control-label">{{storeSearchList}}</label>
+							<input type="hidden" name="store" class="form-control" ng-model="store" id="inputStore" autocomplete="off" required disabled>
+
+							<div class="help-block" ng-messages="form.title.$error" ng-if="form.store.$touched && form.store.$invalid">
+								<div ng-messages-include="/resources/js/views/templates/form-error-messages.html"></div>
+							</div>
+
+						</div>
+
+						<button type="button" class="btn btn-success" ng-click="searchStore()">Search</button>
+
+					</div>
+
 					<!-- Image Upload -->
 
 					<div class="form-group" ng-class="{ 'has-error' : form.formImage.$invalid }">

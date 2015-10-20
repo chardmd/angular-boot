@@ -7,6 +7,7 @@ require.config({
         'angular/angular-flash-alert': '/resources/bower_components/angular-flash-alert/dist/angular-flash.min',
         'angular/smart-table': '/resources/bower_components/angular-smart-table/dist/smart-table.min',
         'angular/ng-file-upload': '/resources/bower_components/ng-file-upload/ng-file-upload.min',
+        'angular/checklist-model': '/resources/bower_components/checklist-model/checklist-model',
         'text': '/resources/bower_components/requirejs-text/text',
         'jquery': '/resources/bower_components/admin-lte/plugins/jQuery/jQuery-2.1.4.min',
         'bootstrap': '/resources/bower_components/admin-lte/bootstrap/js/bootstrap',
@@ -37,6 +38,9 @@ require.config({
         'angular/ng-file-upload': {
             'deps': ['angular']
         },
+        'angular/checklist-model': {
+            'deps': ['angular']
+        },
         'adminlte': {
             'deps': ['jquery', 'bootstrap']
         },
@@ -62,9 +66,10 @@ define('app', function(require) {
     require('angular/smart-table');
     require('angular/angular-flash-alert');
     require('angular/ng-file-upload');
+    require('angular/checklist-model');
 
     var app = angular.module('blueprint', ['ngRoute', 'ngMessages', 'ngDialog',
-                                            'smart-table', 'flash', 'ngFileUpload']);
+                                            'smart-table', 'flash', 'ngFileUpload', 'checklist-model']);
 
     app.config(require('config/Routes'));
     app.config(require('config/Controllers'));
