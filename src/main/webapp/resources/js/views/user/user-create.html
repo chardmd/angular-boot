@@ -69,7 +69,37 @@
 						</div>
 					</div>
 
+					<!-- Image Upload -->
+
+					<div class="form-group" ng-class="{ 'has-error' : form.formImage.$invalid }">
+						<label class="col-sm-2 control-label">Image Upload</label>
+						<div class="col-sm-9">
+							<input type="file" ngf-select ng-model="formImage" name="file" accept="image/*" ngf-max-size="2MB" required>
+							<br />
+							<img ng-show="form.file.$valid" ngf-thumbnail="formImage" class="thumb">
+							<button type="button" ng-click="uploadImage(formImage)" ng-show="formImage" class="btn btn-success">Upload</button>
+							<button type="button" ng-click="formImage = null" ng-show="formImage" class="btn btn-danger">Remove</button>
+							<span ng-show="formImage.result" class="uploadResult">Image Uploaded!</span>
+						</div>
+					</div>
+
+					<!-- Uploaded images -->
+
+					<div class="form-group">
+						<label class="col-sm-2 control-label">Uploaded Images:</label>
+
+						<div class="col-sm-9">
+							<table class="table table-striped">
+
+								<tr ng-repeat="image in imageList track by $index">
+									<td>{{image}}</td>
+								</tr>
+
+							</table>
+						</div>
+					</div>
 				</div>
+
 				<div class="box-footer">
 					<button type="submit" class="btn btn-success pull-right" ng-disabled="form.$invalid">Save</button>
 					<button type="button" class="btn btn-default" ng-click="resetForm()">Cancel</button>

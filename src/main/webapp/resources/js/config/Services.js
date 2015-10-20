@@ -4,6 +4,7 @@ define(function (require) {
     function Services($provide) {
 
         $provide.service('restService', require('services/RestService'));
+        $provide.service('imageUploadService', require('services/ImageUploadService'));
 
     }
 

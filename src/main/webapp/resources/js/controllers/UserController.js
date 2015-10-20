@@ -1,7 +1,7 @@
-define(function () {
+define(['config/ServerConfig'], function (ServerConfig) {
     'use strict';
 
-    var UserController = function ($scope, $filter, restService, ngDialog, Flash) {
+    var UserController = function ($scope, $filter, restService, ngDialog, Flash, imageUploadService) {
 
         //save a new record
         $scope.createRecord = function () {
@@ -19,7 +19,7 @@ define(function () {
                 }).then(function (confirm) {
 
                     //API CALL
-                    var url = 'http://localhost:8080/user/save';
+                    var url = ServerConfig.URL_SERVER + '/user/save';
                     var params = {};
 
                     restService.post(url, params,
@@ -59,7 +59,7 @@ define(function () {
             }).then(function (confirm) {
 
                 //API CALL
-                var url = 'http://localhost:8080/user/delete';
+                var url = ServerConfig.URL_SERVER + '/user/delete';
 
                 var params = {
                     id: row.userId
@@ -99,6 +99,23 @@ define(function () {
             $scope.form.$setUntouched();
         },
 
+        /**
+         *
+         * Functionalities for image upload
+         */
+
+        $scope.imageList = [];
+
+        $scope.uploadImage = function(file) {
+
+            imageUploadService.uploadImage(file);
+
+            $scope.imageList = imageUploadService.imageList;
+
+            console.log("imageList = " + $scope.imageList);
+
+        };
+
 
         $scope.rowCollection = [
 
@@ -110,6 +127,6 @@ define(function () {
 
     };
 
-    return ['$scope', '$filter', 'restService', 'ngDialog', 'Flash', UserController];
+    return ['$scope', '$filter', 'restService', 'ngDialog', 'Flash', 'imageUploadService', UserController];
 
 });
