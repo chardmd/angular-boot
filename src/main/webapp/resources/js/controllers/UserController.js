@@ -96,6 +96,8 @@ define(['config/ServerConfig'], function (ServerConfig) {
             $scope.imageList = [];
             imageUploadService.imageList = [];
 
+            $scope.formImage = '';
+
             //default - remove validation errors
             $scope.form.$setPristine();
             $scope.form.$setUntouched();
