@@ -73,7 +73,7 @@ define(['config/ServerConfig'], function (ServerConfig) {
                         $scope.rowCollection.splice( $scope.rowCollection.indexOf(row), 1);
 
                         var message = '<strong> Great!</strong>  You have successfully deleted the record.';
-                        Flash.create('info', message, 'custom-class');
+                        Flash.create('success', message, 'custom-class');
                     },
                     function (response) {
                         console.log("error");
@@ -93,6 +93,8 @@ define(['config/ServerConfig'], function (ServerConfig) {
             $scope.name = '';
             $scope.address = '';
             $scope.description = '';
+            $scope.imageList = [];
+            imageUploadService.imageList = [];
 
             //default - remove validation errors
             $scope.form.$setPristine();
