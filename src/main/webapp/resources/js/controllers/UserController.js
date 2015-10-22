@@ -1,9 +1,11 @@
 define(['config/ServerConfig'], function (ServerConfig) {
     'use strict';
 
-    var UserController = function ($scope, $filter, restService, ngDialog, Flash, imageUploadService) {
+    var UserController = function ($scope, $filter, $location, restService, ngDialog, Flash, imageUploadService) {
 
-        //save a new record
+        /**
+         * SAVE A NEW RECORD
+         */
         $scope.createRecord = function () {
 
             if ($scope.form.$valid) {
@@ -20,7 +22,14 @@ define(['config/ServerConfig'], function (ServerConfig) {
 
                     //API CALL
                     var url = ServerConfig.URL_SERVER + '/user/save';
-                    var params = {};
+                    var params = {
+                        name: $scope.name,
+                        address: $scope.address,
+                        description: $scope.description,
+                        storeId: $scope.store.storeId
+                    };
+
+                    console.log("UserController createRecord params = " + JSON.stringify(params));
 
                     restService.post(url, params,
                         function (data) {
@@ -86,6 +95,93 @@ define(['config/ServerConfig'], function (ServerConfig) {
 
             });
         },
+
+        /**
+         * GET RECORD BY PASSING ID - Use in Loading values in Update Form
+         */
+        $scope.getRecord = function () {
+
+            var paramId = $location.search().id;
+
+            //API CALL
+            var url = ServerConfig.URL_SERVER + '/user/update';
+
+            var params = {
+                id: paramId
+            };
+
+            console.log("UserController getRecord params = " + JSON.stringify(params));
+
+            restService.get(url, params,
+
+                function (data) {
+
+                    //Load Data here from the API
+                    $scope.name = 'My Name';
+                    $scope.address = "My Address";
+                    $scope.description = "Description";
+                    $scope.store =  {
+                        storeId: 1,
+                        storeName: "Cotton ON",
+                        adddress: "Store Update"
+                    };
+
+
+                },
+                function (response) {
+                    console.log("error");
+                }
+            );
+        };
+
+        /**
+         *  UPDATE A RECORD
+         */
+        $scope.updateRecord = function () {
+
+            if ($scope.form.$valid) {
+
+                ngDialog.openConfirm({
+
+                    template: '<br/><p>Do you want to update this record?</p><br/>\
+                                     <div class="ngdialog-buttons">\
+                                     <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>\
+                                     <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm()">Yes</button>\
+                                     </div>',
+                    plain: true
+                }).then(function (confirm) {
+
+                    //API CALL
+                    var url = ServerConfig.URL_SERVER + '/user/save';
+
+                    var params = {
+                        name: $scope.name,
+                        address: $scope.address,
+                        description: $scope.description,
+                        storeId: $scope.store.storeId
+                    };
+
+                    console.log("UserController updateRecord params = " + JSON.stringify(params));
+
+                    restService.post(url, params,
+                        function (data) {
+
+                            var message = '<strong> Well done!</strong>  You have successfully updated the record.';
+                            Flash.create('info', message, 'custom-class');
+                        },
+                        function (response) {
+                            console.log("error");
+                        }
+                    );
+
+                }, function (close) {
+
+                    console.log("Dialog close.");
+
+                });
+
+            }
+        };
 
         $scope.resetForm = function () {
 
@@ -162,6 +258,6 @@ define(['config/ServerConfig'], function (ServerConfig) {
 
     };
 
-    return ['$scope', '$filter', 'restService', 'ngDialog', 'Flash', 'imageUploadService', UserController];
+    return ['$scope', '$filter', '$location', 'restService', 'ngDialog', 'Flash', 'imageUploadService', UserController];
 
 });

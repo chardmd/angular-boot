@@ -44,6 +44,18 @@ public class UserController {
         return user;
     }
 
+    @ResponseBody
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value="update", method = RequestMethod.GET)
+    public UserDTO updateUser(@RequestParam(value="id", required= false) int id) {
+
+        UserDTO user = new UserDTO();
+
+        user.setTitle("User 1");
+
+        return user;
+    }
+
 
 
     @ExceptionHandler(Exception.class)

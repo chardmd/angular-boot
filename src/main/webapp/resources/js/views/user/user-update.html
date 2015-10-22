@@ -16,18 +16,18 @@
 
 		<!-- Your Page Content Here -->
 
-		<div class="box box-info">
+		<div class="box box-success">
 
 			<!-- Tabs -->
 
 			<ul class="nav nav-tabs">
-				<li role="presentation"><a href="#/users/create" ng-click="resetForm()">Create User</a></li>
+				<li role="presentation" class="active"><a href="#/users/create" ng-click="resetForm()">Create User</a></li>
 				<li role="presentation"><a href="#/users/list" ng-click="resetForm()">User List</a></li>
-				<li role="presentation" class="active"><a href="#/users/update" ng-click="resetForm()">Update User</a></li>
+				<li role="presentation" class="active"><a href="javascript:void(0);">Update User</a></li>
 			</ul>
 
 			<!-- form start -->
-			<form class="form-horizontal" name="form" ng-submit="createRecord()" novalidate>
+			<form class="form-horizontal" name="form" ng-submit="updateRecord()" ng-init="getRecord()" novalidate>
 				<div class="box-body">
 
 					<!-- Name -->
@@ -69,7 +69,28 @@
 						</div>
 					</div>
 
+					<!-- Store -->
+
+					<div class="form-group" ng-class="{ 'has-error' : form.store.$touched && form.store.$invalid }">
+
+						<label for="inputStore" class="col-sm-2 control-label">Store Mapping</label>
+
+						<div class="col-sm-8">
+							<label class="control-label">{{store.storeName}}</label>
+							<input type="hidden" name="store" class="form-control" ng-model="store.storeId" id="inputStore" autocomplete="off" required disabled>
+
+							<div class="help-block" ng-messages="form.title.$error" ng-if="form.store.$touched && form.store.$invalid">
+								<div ng-messages-include="/resources/js/views/templates/form-error-messages.html"></div>
+							</div>
+
+						</div>
+
+						<button type="button" class="btn btn-success" ng-click="searchStore()">Search</button>
+
+					</div>
+
 				</div>
+
 				<div class="box-footer">
 					<button type="submit" class="btn btn-success pull-right" ng-disabled="form.$invalid">Save</button>
 					<button type="button" class="btn btn-default" ng-click="resetForm()">Cancel</button>

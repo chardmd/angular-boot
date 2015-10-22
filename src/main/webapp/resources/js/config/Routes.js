@@ -15,17 +15,10 @@ define(function () {
             templateUrl: templateDirectory + 'view2.html'
         };
 
-        var userCreate = {
-            templateUrl: templateDirectory + 'user/user-create.html'
-        };
-
-        var userList = {
-            templateUrl: templateDirectory + 'user/user-list.html'
-        };
-
-        var userUpdate = {
-            templateUrl: templateDirectory + 'user/user-update.html'
-        };
+        // User Templates
+        var userCreate = { templateUrl: templateDirectory + 'user/user-create.html' };
+        var userList = { templateUrl: templateDirectory + 'user/user-list.html' };
+        var userUpdate = { templateUrl: templateDirectory + 'user/user-update.html' };
 
         $routeProvider
             .when('/users/create', userCreate)

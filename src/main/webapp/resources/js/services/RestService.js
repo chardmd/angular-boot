@@ -8,6 +8,18 @@ define(function() {
         //get
         _this.get = function(url, params, returnSuccess, returnError) {
 
+            var strParam = [];
+
+            for (var key in params) {
+                if (params.hasOwnProperty(key)) {
+                    strParam.push(key + '=' + encodeURIComponent(params[key]));
+                }
+            }
+
+            if (strParam.length > 0) {
+                url += '?' + strParam.join('&');
+            }
+
             $http.get(url, params).
                 success(function(data, status, headers, config) {
                     returnSuccess(data, status, headers, config);
