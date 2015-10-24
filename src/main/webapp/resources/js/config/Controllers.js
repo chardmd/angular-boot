@@ -5,7 +5,7 @@ define(function(require) {
 
         $controllerProvider.register('SidebarController', require('controllers/Sidebar'));
         $controllerProvider.register('UserController', require('controllers/UserController'));
-        $controllerProvider.register('View2Controller', require('controllers/View2'));
+        $controllerProvider.register('MapController', require('controllers/MapController'));
 
     };
 

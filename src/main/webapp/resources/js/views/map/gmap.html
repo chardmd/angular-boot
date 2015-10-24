@@ -1,13 +1,13 @@
-<div ng-controller="View2Controller">
+<div ng-controller="MapController">
 
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Categories
+			Google Map
 		</h1>
 		<ol class="breadcrumb">
 			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-			<li class="active">Users</li>
+			<li class="active">Google Map</li>
 		</ol>
 	</section>
 
@@ -18,7 +18,15 @@
 
 		<div class="box box-success">
 			<div class="box-header with-border">
-				<h3 class="box-title">{{welcomeMessage}}</h3>
+
+				<ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options">
+
+					<ui-gmap-search-box template="searchbox.template" events="searchbox.events" position="searchbox.position"></ui-gmap-search-box>
+
+					<ui-gmap-marker coords="marker.coords" idkey="marker.id"></ui-gmap-marker>
+
+				</ui-gmap-google-map>
+
 			</div><!-- /.box-header -->
 		</div>
 

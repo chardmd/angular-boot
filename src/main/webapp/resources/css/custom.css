@@ -24,3 +24,13 @@
     margin-left: 10px;
     color: green;
 }
+
+
+.angular-google-map-container {
+    height: 350px;
+}
+
+.searchbox {
+    width: 350px;
+    margin: 10px 10px 0 0;
+}

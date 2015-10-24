@@ -11,21 +11,20 @@ define(function () {
             controller: 'SidebarController'
         };
 
-        var configView2 = {
-            templateUrl: templateDirectory + 'view2.html'
-        };
-
         // User Templates
         var userCreate = { templateUrl: templateDirectory + 'user/user-create.html' };
         var userList = { templateUrl: templateDirectory + 'user/user-list.html' };
         var userUpdate = { templateUrl: templateDirectory + 'user/user-update.html' };
+
+        //map
+        var mapView = { templateUrl: templateDirectory + 'map/gmap.html'};
 
         $routeProvider
             .when('/users/create', userCreate)
             .when('/users/list', userList)
             .when('/users/update', userUpdate)
 
-            .when('/view2', configView2)
+            .when('/maps/map', mapView)
 
             //redirect to homepage if no url mapping found (future feature)
             .otherwise('/users/create', userCreate);
