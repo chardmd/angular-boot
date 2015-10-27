@@ -62,7 +62,7 @@ define(function() {
       };
 
       $scope.searchbox = {
-         template: '/resources/js/views/templates/google-searchbox.html',
+         template: './js/views/templates/google-searchbox.html',
          events: events,
          position: 'top-right'
       };

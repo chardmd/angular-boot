@@ -4,7 +4,7 @@ define(function () {
 
         'use strict';
 
-        var templateDirectory = '/resources/js/views/';
+        var templateDirectory = './js/views/';
 
         var configSidebar = {
             templateUrl: templateDirectory + 'sidebar.html',

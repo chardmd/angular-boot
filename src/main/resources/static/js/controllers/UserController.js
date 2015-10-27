@@ -230,7 +230,7 @@ define(['config/ServerConfig'], function (ServerConfig) {
         $scope.searchStore = function() {
 
             ngDialog.open({
-                template: '/resources/js/views/templates/store-search.html',
+                template: './js/views/templates/store-search.html',
                 scope: $scope
             });
 

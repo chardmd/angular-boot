@@ -1,1 +1,1 @@
-# Blueprint - Enterprise Angular / Java EE Stack
+# Blueprint - AngularJS - Spring - MyBatis Stack

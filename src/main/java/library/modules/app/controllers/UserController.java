@@ -55,13 +55,4 @@ public class UserController {
 
         return user;
     }
-
-
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> errorHandler(Exception exc) {
-        LOGGER.error(exc.getMessage(), exc);
-        return new ResponseEntity<>(exc.getMessage(), HttpStatus.BAD_REQUEST);
-    }
-
 }
