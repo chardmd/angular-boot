@@ -85,7 +85,7 @@ define('app', function(require) {
     require('angular/simpleLogger');
     require('angular/googleMaps');
 
-    var app = angular.module('blueprint', ['ngRoute', 'ngMessages', 'ngDialog',
+    var app = angular.module('angular-boot', ['ngRoute', 'ngMessages', 'ngDialog',
                                             'smart-table', 'flash', 'ngFileUpload', 'checklist-model', 'uiGmapgoogle-maps']);
 
     app.config(require('config/Routes'));
@@ -102,7 +102,7 @@ require(['angular', 'app'], function(angular, app) {
         'use strict';
 
         angular.element(document).ready(function() {
-            angular.bootstrap(document, ['blueprint']);
+            angular.bootstrap(document, ['angular-boot']);
         });
     }
 );
