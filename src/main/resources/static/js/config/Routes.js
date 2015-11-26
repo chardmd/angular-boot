@@ -1,37 +1,47 @@
 define(function () {
 
-    function Route($routeProvider) {
+    function Route($stateProvider, $urlRouterProvider) {
 
         'use strict';
 
         var templateDirectory = './js/views/';
 
-        var configSidebar = {
-            templateUrl: templateDirectory + 'sidebar.html',
-            controller: 'SidebarController'
-        };
+        $stateProvider
+            // Parent Template for forms
+            .state('common', {
+                abstract: true,
+                templateUrl: templateDirectory + 'common.html'
+            })
 
-        // User Templates
-        var userCreate = { templateUrl: templateDirectory + 'user/user-create.html' };
-        var userList = { templateUrl: templateDirectory + 'user/user-list.html' };
-        var userUpdate = { templateUrl: templateDirectory + 'user/user-update.html' };
+            //User
+            .state('user-create', {
+                parent: 'common',
+                url: '/users/create',
+                templateUrl: templateDirectory + 'user/user-create.html'
+            })
+            .state('user-list', {
+                parent: 'common',
+                url: '/users/list',
+                templateUrl: templateDirectory + 'user/user-list.html'
+            })
+            .state('user-update', {
+                parent: 'common',
+                url: '/users/update',
+                templateUrl: templateDirectory + 'user/user-update.html'
+            })
 
-        //map
-        var mapView = { templateUrl: templateDirectory + 'map/gmap.html'};
+            //MAP
+            .state('map', {
+                parent: 'common',
+                url: '/maps/map',
+                templateUrl: templateDirectory + 'map/gmap.html'
+            });
 
-        $routeProvider
-            .when('/users/create', userCreate)
-            .when('/users/list', userList)
-            .when('/users/update', userUpdate)
-
-            .when('/maps/map', mapView)
-
-            //redirect to homepage if no url mapping found (future feature)
-            .otherwise('/users/create', userCreate);
-
+            //redirect to homepage if no url mapping found
+            $urlRouterProvider.otherwise('/users/create');
     };
 
-    return ['$routeProvider', Route];
+    return ['$stateProvider', '$urlRouterProvider', Route];
 
 });
 

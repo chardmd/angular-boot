@@ -12,6 +12,7 @@ require.config({
         'angular/checklist-model': '../bower_components/checklist-model/checklist-model',
         'angular/simpleLogger': '../bower_components/angular-simple-logger/dist/angular-simple-logger',
         'angular/googleMaps': '../bower_components/angular-google-maps/dist/angular-google-maps.min',
+        'angular/ui-router': '../bower_components/angular-ui-router/release/angular-ui-router.min',
         'text': '../bower_components/requirejs-text/text',
         'jquery': '../bower_components/admin-lte/plugins/jQuery/jQuery-2.1.4.min',
         'bootstrap': '../bower_components/admin-lte/bootstrap/js/bootstrap',
@@ -49,7 +50,10 @@ require.config({
             'deps': ['angular']
         },
         'angular/googleMaps': {
-            'deps': ['angular'],
+            'deps': ['angular']
+        },
+        'angular/ui-router': {
+            'deps': ['angular']
         },
         'adminlte': {
             'deps': ['jquery', 'bootstrap'],
@@ -84,8 +88,9 @@ define('app', function(require) {
     require('lodash');
     require('angular/simpleLogger');
     require('angular/googleMaps');
+    require('angular/ui-router');
 
-    var app = angular.module('angular-boot', ['ngRoute', 'ngMessages', 'ngDialog',
+    var app = angular.module('angular-boot', ['ui.router', 'ngMessages', 'ngDialog',
                                             'smart-table', 'flash', 'ngFileUpload', 'checklist-model', 'uiGmapgoogle-maps']);
 
     app.config(require('config/Routes'));

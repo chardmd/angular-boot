@@ -34,3 +34,15 @@
     width: 350px;
     margin: 10px 10px 0 0;
 }
+
+.main-sidebar, .left-side {
+    position: fixed;
+}
+
+.main-header .logo {
+    position: fixed;
+}
+
+body {
+    background: #ecf0f5;
+}
